@@ -7,6 +7,7 @@ trait Product {
 trait Drink extends Product
 trait Food extends Product
 trait HotFood extends Food
+trait PremiumFood extends Food
 
 object Product {
   def apply(name: String): Product = name.toLowerCase match {
@@ -14,6 +15,7 @@ object Product {
     case "coffee" => Coffee
     case "cheese sandwich" => CheeseSandwich
     case "steak sandwich" => SteakSandwich
+    case "lobster" => Lobster
   }
 }
 
@@ -31,4 +33,8 @@ object CheeseSandwich extends Food {
 
 object SteakSandwich extends HotFood {
   override val price: BigDecimal = 4.5
+}
+
+object Lobster extends PremiumFood {
+  override val price: BigDecimal = 25
 }

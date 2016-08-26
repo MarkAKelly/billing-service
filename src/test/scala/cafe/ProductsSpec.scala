@@ -54,6 +54,18 @@ class ProductsSpec extends WordSpec with Matchers {
       }
     }
 
+    "passing in a string 'Lobster'" should {
+      val lobster = Product("Lobster")
+
+      "create a Lobster object" in {
+        lobster shouldBe Lobster
+      }
+
+      "have a price of £25.00" in {
+        lobster.price shouldBe BigDecimal(25)
+      }
+    }
+
   }
 }
 
