@@ -40,13 +40,12 @@ Lobster, a premium item, is added to the menu at a cost of £25 When purchased i
 #### Exercise 4 – Loyalty Scheme
 ###### _(30 Minutes)_
 
-Some customers are issued a loyalty card with star for every consecutive months the customer has spent £20 or more in a single visit in each
-month
+Some customers are issued a loyalty card with a star for every consecutive month the customer has spent £20 or more in a single visit
 
-Submitting a loyalty card along with the purchased items will reduce the total bill (before service charge is applied) by 2.5% for every star
+Submitting a loyalty card along with the purchased items will reduce the total bill (before the service charge is applied) by 2.5% for every star
 (min: 3, max: 8).
 
-Example: A customer with loyalty card with 10 stars will reduce the total bill by 20% (8 stars * 2.5%)
+Example: A customer with a loyalty card with 10 stars will reduce the total bill by 20% (8 stars * 2.5%)
 
 Loyalty discount is not applied to premium menu items
 
