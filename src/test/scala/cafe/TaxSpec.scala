@@ -23,19 +23,19 @@ class TaxSpec extends WordSpec with Matchers {
     }
 
     "have the NI contribution of 159.40" in {
-
+      payslip.ni shouldBe 159.40
     }
 
     "have a tax free allowance of 916.67" in {
-
+      payslip.allowance shouldBe 916.67
     }
 
     "have a taxable income of 1083.33" in {
-
+      payslip.taxableIncome shouldBe 1083.33
     }
 
     "have tax payable of 216.67" in {
-
+      payslip.taxPayable shouldBe 216.67
     }
   }
 }
