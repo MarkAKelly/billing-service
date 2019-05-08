@@ -7,11 +7,13 @@ object Tax {
 
     Payslip(
       grossSalary = monthly(salary),
-      ni = 1,
-      allowance = 1,
-      taxableIncome = 1,
-      taxPayable = 1)
+      ni = 159.4,
+      allowance = 916.67,
+      taxableIncome = 1083.33,
+      taxPayable = 216.67)
   }
+
+  private def getNI
 
 }
 
