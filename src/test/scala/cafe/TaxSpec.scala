@@ -38,4 +38,40 @@ class TaxSpec extends WordSpec with Matchers {
       payslip.taxPayable shouldBe 216.67
     }
   }
+
+  "The monthly payslip for an employee with a salary of £45,000" should {
+
+    val ANNUAL_SALARY: Int = 45000
+
+    val payslip = Tax.getPayslip(ANNUAL_SALARY)
+
+    "have a the ID 12345" in {
+      payslip.id shouldBe 12345
+    }
+
+    "have the name John J Doe" in {
+      payslip.name shouldBe "John J Doe"
+    }
+
+    "have the gross salary of 3750.00" in {
+      payslip.grossSalary shouldBe 3750.00
+    }
+
+    "have the NI contribution of 352.73" in {
+      payslip.ni shouldBe 352.73
+    }
+
+    "have a tax free allowance of 916.67" in {
+      payslip.allowance shouldBe 916.67
+    }
+
+    "have a taxable income of 2,833.33" in {
+      payslip.taxableIncome shouldBe 2833.33
+    }
+
+    "have tax payable of 600.00" in {
+      payslip.taxPayable shouldBe 600.00
+    }
+  }
+
 }

@@ -45,9 +45,9 @@ object Tax {
     val additional = 0.45
 
     val taxable = taxableIncome(salary)
-    val additionalAmt: BigDecimal = if (taxable > 155000) taxable - 155000 else 0
+    val additionalAmt: BigDecimal = if (taxable > 150000) taxable - 150000 else 0
     val higherAmt: BigDecimal = if (taxable > 43000) taxable - 11000 - additionalAmt else 0
-    val basicAmt: BigDecimal = if (taxable > 11000) taxable - higherAmt - higherAmt   else 0
+    val basicAmt: BigDecimal = if (taxable > 11000) taxable - higherAmt else 0
 
     (basicAmt * basic) + (higherAmt * higher) + (additionalAmt * additional)
 
