@@ -1,7 +1,5 @@
 package cafe
 
-import sun.security.krb5.internal.PAData.SaltAndParams
-
 object Tax {
 
   val allowance:BigDecimal = 11000
@@ -9,8 +7,6 @@ object Tax {
   val monthly : BigDecimal => BigDecimal = num => (num / 12).setScale(2, BigDecimal.RoundingMode.HALF_UP)
 
   def getPayslip(salary: BigDecimal): Payslip = {
-
-    taxPayable(salary)
 
     Payslip(
       grossSalary = monthly(salary),
@@ -38,22 +34,26 @@ object Tax {
     salary - allowance
   }
 
-  private def taxPayable(salary: BigDecimal): BigDecimal = {
+  private def taxPayable(sal: BigDecimal): BigDecimal = {
 
-    val basic = 0.2
-    val higher = 0.4
-    val additional = 0.45
+    val basicRate = 0.2
+    val higherRate = 0.4
+    val additionalRate = 0.45
 
-    val taxable = taxableIncome(salary)
-    val additionalAmt: BigDecimal = if (taxable > 150000) taxable - 150000 else 0
-    val higherAmt: BigDecimal = if (taxable > 43000) taxable - 11000 - additionalAmt else 0
-    val basicAmt: BigDecimal = if (taxable > 11000) taxable - higherAmt else 0
+    val salary = Range(0, sal.toInt)
 
-    (basicAmt * basic) + (higherAmt * higher) + (additionalAmt * additional)
+    val ZERO = 0
+    val basicLimit = 11000
+    val higherLimit = 43000
+    val additionalLimit = 150000
 
+    val allowance = salary.splitAt(basicLimit)
+    val basicPart = allowance._2.partition(b => (b >= basicLimit) && (b < higherLimit))
+    val higherPart = basicPart._2.partition(h => h < additionalLimit && h >=basicLimit)
+    val addPart = higherPart._2.partition(_ > additionalLimit)
+
+    (basicPart._1.size * basicRate) + (higherPart._1.size * higherRate) + (addPart._1.size * additionalRate)
   }
-
-
 }
 
 case class Payslip(id: Int = 12345,
